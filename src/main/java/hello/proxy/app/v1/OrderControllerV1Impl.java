@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 
-@RestController
+//@RestController
 public class OrderControllerV1Impl implements OrderControllerV1{
     private final OrderServiceV1 orderService;
 
@@ -14,14 +14,14 @@ public class OrderControllerV1Impl implements OrderControllerV1{
     }
 
     @Override
-    @GetMapping("/v1/request")
+    //@GetMapping("/v1/request")
     public String request(@RequestParam("itemId") String itemId) {
         orderService.orderItem(itemId);
         return "ok";
     }
 
     @Override
-    @GetMapping("/v1/no-log")
+    //@GetMapping("/v1/no-log")
     public String noLog() {
         return "ok";
     }
