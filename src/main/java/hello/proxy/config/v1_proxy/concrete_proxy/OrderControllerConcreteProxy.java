@@ -1,9 +1,8 @@
-package hello.proxy.config.v1_config.concrete_proxy;
+package hello.proxy.config.v1_proxy.concrete_proxy;
 
 import hello.proxy.app.v2.OrderControllerV2;
 import hello.proxy.trace.TraceStatus;
 import hello.proxy.trace.logtrace.LogTrace;
-import org.springframework.web.bind.annotation.RestController;
 
 //@RestController
 public class OrderControllerConcreteProxy extends OrderControllerV2 {
