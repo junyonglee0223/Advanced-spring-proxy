@@ -4,7 +4,7 @@ import hello.proxy.app.v2.OrderControllerV2;
 import hello.proxy.trace.TraceStatus;
 import hello.proxy.trace.logtrace.LogTrace;
 
-//@RestController
+
 public class OrderControllerConcreteProxy extends OrderControllerV2 {
     private final OrderControllerV2 target;
     private final LogTrace logTrace;

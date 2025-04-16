@@ -5,6 +5,7 @@ import hello.proxy.trace.TraceStatus;
 import hello.proxy.trace.logtrace.LogTrace;
 import org.springframework.web.bind.annotation.RestController;
 
+//OrderControllerV1Impl에 설정된 RestController annotation 삭제해야 함!
 @RestController
 public class OrderControllerInterfaceProxy implements OrderControllerV1{
     private final OrderControllerV1 target;
