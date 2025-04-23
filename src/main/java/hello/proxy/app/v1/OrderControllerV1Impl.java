@@ -4,7 +4,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-
+//controller proxy 직접 설정하지 않을 경우 restController 사용!!
+//여기서 사용해도 proxy 설정이 되지 않는다
 //@RestController
 public class OrderControllerV1Impl implements OrderControllerV1{
     private final OrderServiceV1 orderService;
