@@ -19,17 +19,18 @@ public class ProxyFactoryConfigV1 {
     public OrderControllerV1 orderControllerV1(LogTrace logTrace){
         OrderControllerV1 controller = new OrderControllerV1Impl(orderServiceV1(logTrace));
 
-//        //using proxy factory start!!
-//        ProxyFactory proxyFactory = new ProxyFactory(controller);
-//        proxyFactory.addAdvisor(getAdvisor(logTrace));
-//        OrderControllerV1 proxy = (OrderControllerV1) proxyFactory.getProxy();
-//
-//
-//        log.info("ProxyFactory proxy = {}, target = {}", proxy.getClass(), controller.getClass());
-//        return (OrderControllerV1) proxyFactory.getProxy();
-//        //using proxy factory end!!
+        //using proxy factory start!!
+        ProxyFactory proxyFactory = new ProxyFactory(controller);
+        proxyFactory.addAdvisor(getAdvisor(logTrace));
+        OrderControllerV1 proxy = (OrderControllerV1) proxyFactory.getProxy();
 
-        return new OrderControllerInterfaceProxy(controller, logTrace);
+
+        log.info("ProxyFactory proxy = {}, target = {}", proxy.getClass(), controller.getClass());
+        return (OrderControllerV1) proxyFactory.getProxy();
+        //using proxy factory end!!
+
+        ////not use interface restController
+        //return new OrderControllerInterfaceProxy(controller, logTrace);
     }
     @Bean
     public OrderServiceV1 orderServiceV1(LogTrace logTrace){

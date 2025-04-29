@@ -14,11 +14,21 @@ import java.lang.reflect.Proxy;
 public class DynamicProxyFilterConfig {
     private static final String[] PATTERNS = {"request*", "order*", "save*"};
 
+//    @Bean
+//    public OrderControllerV1 orderControllerV1(LogTrace logTrace){
+//        OrderControllerV1 controllerV1Impl = new OrderControllerV1Impl(orderServiceV1(logTrace));
+//        return new OrderControllerInterfaceProxy(controllerV1Impl, logTrace);
+//    }
     @Bean
     public OrderControllerV1 orderControllerV1(LogTrace logTrace){
         OrderControllerV1 controllerV1Impl = new OrderControllerV1Impl(orderServiceV1(logTrace));
-        return new OrderControllerInterfaceProxy(controllerV1Impl, logTrace);
+        return (OrderControllerV1) Proxy.newProxyInstance(
+                OrderControllerV1.class.getClassLoader(),
+                new Class[]{OrderControllerV1.class},
+                new LogTraceFilterHandler(controllerV1Impl, logTrace, PATTERNS)
+        );
     }
+
     @Bean
     public OrderServiceV1 orderServiceV1(LogTrace logTrace){
         OrderServiceV1 serviceV1Impl = new OrderServiceV1Impl(orderRepositoryV1(logTrace));
